@@ -4,10 +4,13 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
-  , http = require('http')
-  , path = require('path');
+, routes = require('./routes')
+, bikes = require('./routes/bikes')
+, map = require('./routes/map')
+, user = require('./routes/user')
+, http = require('http')
+, path = require('path')
+, BikesModel = require('./bikeDB.js').BikesModel;
 
 var app = express();
 
@@ -25,12 +28,36 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+    app.use(express.errorHandler());
 }
 
 app.get('/', routes.index);
+app.get('/bikes', bikes.bikes);
+app.get('/map', map.map);
 app.get('/users', user.list);
+app.post('/bikes/new', function(req, res){
+    bikesModel.registerBike({
+        serial: req.param('serial')
+    }, function( error, docs) {
+        console.log(error);
+        console.log(docs);
+        res.redirect('/')
+    });
+});
+
+var bikesModel = new BikesModel('localhost', 27017);
+bikesModel.registerBike(
+    {
+    title: 'mine',
+    name: 'Drew',
+    serial: 'sadl38843948f'
+},
+function(error, received) {
+    console.log(error);
+    console.log(received);
+}
+);
 
 http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+    console.log('Express server listening on port ' + app.get('port'));
 });

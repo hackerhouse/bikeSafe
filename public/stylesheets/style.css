@@ -5,3 +5,7 @@ body {
 a {
   color: #00B7FF;
 }
+#drop_zone {
+  width: 100%;
+  border: 2px dashed gray;
+}
