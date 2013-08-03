@@ -44,6 +44,12 @@ app.post('/bikes/new', function(req, res){
         res.redirect('/')
     });
 });
+app.post('/bikes/new/photo', function(req, res) { handlePhotos(req, res); });
+
+var handlePhotos = function(req, res) {
+    console.lgo(req);
+    console.lgo(res);
+};
 
 var bikesModel = new BikesModel('localhost', 27017);
 bikesModel.registerBike(
