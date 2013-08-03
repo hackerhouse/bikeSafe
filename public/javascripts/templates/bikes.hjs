@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <h1>Add your bicycle's serial number and any photos you have. These will be used to retrieve your bike in case of theft.</h1>
+    <form action="/bikes/new" method="POST">
+        <label for="serial">Bike Serial</label>
+        <input name="serial" type="text" />
+        <input type="submit" value="submit serial"/>
+    </form>
+    <div id="drop_zone">
+        <h1>Drag Photos Here</h1>
+    </div>
+    <ul id="list">
+    </ul>
+    <script type="text/javascript" src="/javascripts/app.js"></script>
+</body>
+</html>

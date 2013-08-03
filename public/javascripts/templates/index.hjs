@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>{{ title }}</h1>
+    <h2>Welcome to {{ title }}</h2>
+    <p>By working together and sharing information, we can reduce bike theft 
+in the city of San Francisco and beyond. Volunteer to register and photograph your
+bicycle, and if it is ever stolen, it can be more easily returned to you.</p>
+<p>You should also consider subscribing to the theft and sentinel feeds, which will let you
+know when a bike has been stolen, or is being locked up for a time, nearby. By quickly responding to a theft, the bike can be recovered, and the perpetrator caught, much more likely than if days pass before the crime is publicised. The sentinel feed lets you know when a bike is being locked up nearby, so you can keep an eye on it for your fellow cyclist.</p>
+  </body>
+</html>
