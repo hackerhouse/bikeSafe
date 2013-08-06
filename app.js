@@ -10,6 +10,7 @@ var express = require('express')
 , user = require('./routes/user')
 , http = require('http')
 , path = require('path')
+, fs = require('fs')
 , BikesModel = require('./bikeDB.js').BikesModel;
 
 var app = express();
@@ -41,10 +42,26 @@ app.post('/bikes/new', function(req, res){
     }, function( error, docs) {
         console.log(error);
         console.log(docs);
-        res.redirect('/')
+        res.redirect('/bikes')
     });
 });
-app.post('/bikes/new/photo', function(req, res) { handlePhotos(req, res); });
+
+app.post('/bikes/photo', function(req, res) {
+    console.log(req.files.file);
+        fs.readFile(req.files.file.path, function (err, data) {
+            // ...
+            if (err) { console.log(err); }
+            var newPath =  "./public/images/uploads/photo.jpg";
+            fs.writeFile(newPath, data, function (err) {
+                if (err) console.log(err);
+            });
+        }); 
+});
+app.get('/bikes/all', function(req, res) {
+    bikesModel.findAll(function(error, bikes) {
+        res.send(bikes);
+    });
+});
 
 var handlePhotos = function(req, res) {
     console.lgo(req);
@@ -52,18 +69,6 @@ var handlePhotos = function(req, res) {
 };
 
 var bikesModel = new BikesModel('localhost', 27017);
-bikesModel.registerBike(
-    {
-    title: 'mine',
-    name: 'Drew',
-    serial: 'sadl38843948f'
-},
-function(error, received) {
-    console.log(error);
-    console.log(received);
-}
-);
-
 http.createServer(app).listen(app.get('port'), function(){
     console.log('Express server listening on port ' + app.get('port'));
 });

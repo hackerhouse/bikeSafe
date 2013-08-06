@@ -1,12 +1,37 @@
-body {
-    padding: 10px;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* {
+box-sizing: border-box;
+&::selection {
+    background: rgba(176, 224, 230, 1.0);
 }
-
+}
+body {
+    margin:0;
+    padding:0;
+    font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size:100%;
+}
+/*     Typography                */
+/*_______________________________*/
+h1 {
+font-size: 1.5em;
+}
+h2 {
+font-size: 1em;
+}
+h3 {
+font-size: 1em;
+font-weight:bold;
+}
 a {
     color: #00B7FF;
 }
-
+#masthead {
+    background: url('../images/sf.jpg') no-repeat center center; 
+    background-size: cover;
+    font-size:300%;
+    padding:100px 100px;
+    width:100%;
+}
 #drop_zone {
     width:100%;
     border:2px dashed gray;
@@ -15,8 +40,20 @@ a {
     text-align:center;
     border-radius: 5px;
     color:gray;
+    &:hover {
+    border-color:black;
+    box-shadow: inset 0 0 15px gray;
+    transition: all .3s ease-out;
+    background-clip: padding-box;
+    color:black;
+    transition: all .3s ease-out;
+    }
 }
-
+.bikePhoto {
+    border:4px solid rgba(240,240,240,1);
+    border-radius: 3px;
+    box-shadow: 0 0 7px rgba(0,0,0,0.5);
+}
 #drop_zone.dragover {
     background: rgba(255, 79, 0, 0.8);
     border-color:black;
@@ -24,4 +61,39 @@ a {
     transition: all .3s ease-out;
     background-clip: padding-box;
     color:black;
+}
+#serial {
+    text-align:center;
+    border:none;
+    background:none;
+    border-bottom: 4px solid gray;
+    font-size:2em;
+    &:hover {
+        border-bottom-color: black;
+        transition: all 0.2s ease-out;
+    }
+    &:focus {
+        background:rgba(0,0,0,0.05);
+        transition: all 0.2s ease-out;
+        outline:none;
+        border-bottom-color: black;
+    }
+}
+input[type="submit"] {
+    background:orange;
+    border:none;
+    border-radius:5px;
+    font-size:1.3em;
+    color:white;
+    padding: 5px 20px 10px 20px;
+        transition: all 0.2s ease-out;
+    &:hover {
+        background: darken(orange, 2%);
+        transition: all 0.2s ease-out;
+    }
+}
+#registerForm {
+    display:block;
+    text-align:center;
+    margin:30px;
 }
